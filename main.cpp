@@ -6,7 +6,7 @@
 
 #define PIXEL 50
 
-int printVec(std::vector<std::vector<float>> vec){
+int DebugPrintVec(std::vector<std::vector<float>> vec){
     for(int i=0; i<vec.size(); i++){
         for(int j=0; j<vec[0].size(); j++){
             std::cout << vec[i][j];
@@ -43,6 +43,14 @@ std::vector<std::vector<float>> buildBox(){
 }
 
 
+std::vector<std::vector<std::vector<float>>> dupeVec(std::vector<std::vector<float>> inVec){
+    std::vector<std::vector<std::vector<float>>> outVec;
+    for(int i=0; i<10;i++){
+        outVec.push_back(inVec);
+    } 
+    return outVec;
+
+}
 
 
 int drawBox(sf::RenderWindow& window, std::vector<std::vector<float>> roomVec){
@@ -69,7 +77,7 @@ int drawBox(sf::RenderWindow& window, std::vector<std::vector<float>> roomVec){
 
 int main() {
     sf::Texture ghostText;
-    if(!ghostText.loadFromFile("ghost.png"))
+    if(!ghostText.loadFromFile("sprites/ghost.png"))
         return 1;
     sf::Sprite ghostSprite;
     ghostSprite.setTexture(ghostText);
@@ -91,7 +99,6 @@ int main() {
     float speed = .3;    
 
     std::vector<std::vector<float>> boxVec = buildBox();
-    printVec(boxVec);
     
     while (window.isOpen()){
         
